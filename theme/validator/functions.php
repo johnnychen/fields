@@ -22,8 +22,71 @@
  * @since Twenty Twelve 1.0
 */
 
+function form_custom_post_types(){
+	
+	register_post_type('i18n', array(
+						'public'=>true,
+						'labels' => array('name'=>'I18ns', 'singular_name'=>'I18n')
+						));
+	register_post_type('rule', array(
+						'public'=>true,
+						'labels' => array('name'=>'Rules', 'singular_name'=>'Rule')
+						));
+	register_post_type('field', array(
+						'public'=>true,
+						'labels' => array('name'=>'Fields', 'singular_name'=>'Field')
+						));
+	register_post_type('form-page', array(
+						'public'=>true,
+						'labels' => array('name'=>'Form Pages', 'singular_name'=>'Form Page')
+						));
+	
+	register_taxonomy(
+		'rule_tag','rule',
+		array(
+			'show_admin_column' => true,
+			'labels' => array(
+				'name'                       => 'Rule Tags',
+				'singular_name'              => 'Rule Tag'
+			)
+		)
+	);
+	register_taxonomy(
+		'rule_type','rule',
+		array(
+			'show_admin_column' => true,
+			'labels' => array(
+				'name'                       => 'Rule Types',
+				'singular_name'              => 'Rule Type'
+			)
+		)
+	);
+	register_taxonomy(
+		'field_tag','field',
+		array(
+			'show_admin_column' => true,
+			'labels' => array(
+				'name'                       => 'Field Tags',
+				'singular_name'              => 'Field Tag'
+			)
+		)
+	);
+	register_taxonomy(
+		'field_type','field',
+		array(
+			'show_admin_column' => true,
+			'labels' => array(
+				'name'                       => 'Field Types',
+				'singular_name'              => 'Field Type'
+			)
+		)
+	);
+	
+}
+add_action('init', 'form_custom_post_types');
 
-function my_connection_types() {
+function form_connection_types() {
+	
 	p2p_register_connection_type( array(
 		'name' => 'fields2rules',
 		'from' => 'field',
@@ -38,7 +101,7 @@ function my_connection_types() {
 		)
 	) );
 }
-add_action( 'p2p_init', 'my_connection_types' );
+add_action( 'p2p_init', 'form_connection_types' );
 
 
 /**
