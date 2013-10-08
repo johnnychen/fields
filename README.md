@@ -10,3 +10,9 @@
 本主题依赖如下开源wordpress插件，请确保这些插件已经安装：
 
 * [Posts 2 Posts](http://scribu.net/wordpress/posts-to-posts/)
+* [Types](http://wordpress.org/plugins/types/)
+	
+	types功能很多，本系统只使用了其中的custom-fields功能，对不同文章类型添加了不同的自定义属性：
+	
+	* type=`i18n` 增加`en-us`,`cn-zh`,`cn-tw`
+	* type=`rule` 增加`priority`
